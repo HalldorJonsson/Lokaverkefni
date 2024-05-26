@@ -1,5 +1,9 @@
 # Lokaverkefni
 
+
+Change of plans, first edition verður simplified version. Game 2.0 verður nær hugmyndinni að neðan ;D
+
+
 RPG_Adventure
 
 Story driven adventure. Djúp saga með interactions sem breyta framhaldinu. ----
