@@ -4,17 +4,20 @@ class User {
   final String playerName;
   final String companionName;
   List<String> inventory = [];
+
   User({
     required this.playerName,
     required this.companionName,
   });
+
   void addItem(String item) {
-    inventory.add(item);
+    inventory.add(item); //bæta við bakpoka
     print('--- --- ---');
     print('$item has been added to your inventory.');
     print('--- ^---^ ---');
   }
-  void showInventory() {
+
+  void showInventory() { //skoða bakpoka
     if (inventory.isEmpty) {
       print('--- --- ---');
       print('Your inventory is empty.');
@@ -28,6 +31,7 @@ class User {
       }
     }
   }
+
   String chooseWeapon() {
     if (inventory.isEmpty) {
       print('--- --- ---');
@@ -36,16 +40,20 @@ class User {
       return '';
     } else {
       showInventory();
-      print('Choose a weapon by entering the number next to it:');
-      String? input = stdin.readLineSync();
-      if (input != null) {
-        int? index = int.tryParse(input);
-        if (index != null && index > 0 && index <= inventory.length) {
-          return inventory[index - 1];
-        }
+      print('Choose a weapon by number:');
+      String? weaponChoice = stdin.readLineSync();
+      int? index = int.tryParse(weaponChoice ?? '');
+      if (index != null && index > 0 && index <= inventory.length) {
+        return inventory[index - 1];
+      } else {
+        print('Invalid choice.');
+        return '';
       }
-      print('Invalid choice. ');
-      return '';
     }
+  }
+
+  void breakWeapon(String weapon) {
+    inventory.remove(weapon); //brjóta vopn
+    print('$weapon broke.');
   }
 }
