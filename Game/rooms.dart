@@ -97,14 +97,14 @@ class Bedroom extends Room {
   );
   hallway = Room(
   name: 'Hallway',
-  description: 'A dark hallway',
+  description: 'A dark hallway, where does this lead?',
   item: 'crowbar',
-  searchResult: 'You found a crowbar.',
+  searchResult: 'You found a crowbar laying up against the wall.',
   enemy: false,
   );
   library = Room(
   name: 'Library',
-  description: 'A quiet library with stacks of books all around',
+  description: 'A quiet library with a door leading into another room at the opposite end',
   item: 'Torn piece of paper (34)',
   searchResult: 'You found a torn piece of paper with "34" written on it.',
   enemy: false,
@@ -124,7 +124,7 @@ class Bedroom extends Room {
   enemy: true,
   isLocked: true,
   requiredKey: 'key',
-  enemyDescription: 'your companion suddenly has turned into a zombie',
+  enemyDescription: 'your companion starts shaking, growling and foaming from the mouth',
   );
   bedroom = Bedroom(
   name: 'Bedroom',

@@ -54,6 +54,6 @@ class User {
 
   void breakWeapon(String weapon) {
     inventory.remove(weapon); //brjóta vopn
-    print('$weapon broke.');
+    print('**** $weapon has broken and is now useless. ****');
   }
 }

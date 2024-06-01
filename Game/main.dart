@@ -19,10 +19,27 @@ void main() {//failure, endurhlaða og byrja aftur
     );
     exit(0); //búinn með leikinn exit 0
   }
-
-  print('Welcome to the game!'
-  );
-  print('-------');
+//admittedly þá er þetta second hand setup fyrir intro message en fannst það töff
+  print('**********************************************************');
+  print('*                                                        *');
+  print('*            Welcome to "Escape the Haunted House"!      *');
+  print('*                                                        *');
+  print('*  You find yourself in a dark, eerie mansion with no    *');
+  print('*  memory of how you got there. Shadows move in the      *');
+  print('*  corners of your vision, and the air is thick with     *');
+  print('*  dread. You and your companion must navigate through   *');
+  print('*  the treacherous rooms, solve the mysteries, and       *');
+  print('*  survive the horrors that lurk within.                 *');
+  print('*                                                        *');
+  print('*  Beware, for danger is around every corner, and not    *');
+  print('*  everyone can be trusted. Your wits and bravery are    *');
+  print('*  your only tools to escape this nightmare.             *');
+  print('*                                                        *');
+  print('*              Will you escape the house?                *');
+  print('*                                                        *');
+  print('**********************************************************');
+  print('Press Enter to continue...');
+  stdin.readLineSync();
 
   print('Enter your name:'
   );
@@ -49,7 +66,7 @@ void main() {//failure, endurhlaða og byrja aftur
       print('The rat looks sickly and rabid its eyes glowing with a strange, unnatural light.'
       );
       gameMap.currentRoom!.enemy = true; //test enemy encounter.. tbd
-      gameMap.currentRoom!.enemyDescription = 'a sickly, rabid rat';
+      gameMap.currentRoom!.enemyDescription = 'a rabid rat';
       print('Do you want to attack? (yes/no)');
       String? attackChoice = stdin.readLineSync();
       if (attackChoice != null && attackChoice.toLowerCase() == 'yes') {
@@ -68,7 +85,7 @@ void main() {//failure, endurhlaða og byrja aftur
           return;
         }
       } else {
-        print('You chose not to attack. The rat bites you too and you both turn into zombies (and live happily forver after).'
+        print('You chose not to attack. The rat bites you too and you both turn into zombies (and live happily forver after as zombies).'
         );
         print('Game Over.');
         restartGame();
@@ -76,20 +93,20 @@ void main() {//failure, endurhlaða og byrja aftur
       }
     } else if (gameMap.currentRoom!.enemy) {
       if (gameMap.currentRoom!.name == 'Garden') {
-        print('${player.companionName} is turning into a zombie!'
+        print('$companionName is turning into a zombie!'
         );
-        print('Do you want to attack $companionName? (yes/no)'
+        print('You have little time to react, do you choose to attack $companionName? (yes/no)'
         );
         String? attackChoice = stdin.readLineSync();
         if (attackChoice != null && attackChoice.toLowerCase() == 'yes') {
           String weapon = player.chooseWeapon();
           if (weapon == 'knife' || weapon == 'crowbar') {
-            print('You attack with the $weapon and defeat ${player.companionName} who has turned into a zombie.'
+            print('You decide to attack with the $weapon and with no time to waste you stab $companionName who has clearly lost all humanity and is now trying to kill you, you stab again and again until $companionName stops moving.'
             );
             gameMap.currentRoom!.enemy = false;
             player.breakWeapon(weapon);
           } else {
-            print('You chose the wrong weapon. ${player.companionName} turns into a zombie and attacks you.'
+            print('You chose the wrong weapon. $companionName turns into a zombie and attacks you, you are not quick enough to get away and you get eaten alive by $companionName.'
             );
             print('------');
             print('Game Over.');
@@ -98,7 +115,7 @@ void main() {//failure, endurhlaða og byrja aftur
             return;
           }
         } else {
-          print('You chose not to attack. ${player.companionName} turns into a zombie and attacks you.');
+          print('You chose not to attack. $companionName turns into a zombie and runs towards you, you stumble on a rock and $companionName eats you alive.');
           print('Game Over.');
           restartGame();
           return;
@@ -132,7 +149,7 @@ void main() {//failure, endurhlaða og byrja aftur
       print('${i + 1}: Move to ${adjacentRoom.name}${lockedStatus}');
     }
     int additionalOptionStartIndex = gameMap.currentRoom!.adjacentRooms.length + 1;
-    print('---------');
+    print('---------'); //skilrúm á milli options og additional options
     if (gameMap.currentRoom is! Bedroom) {
       print('$additionalOptionStartIndex: Search the room'
       );
